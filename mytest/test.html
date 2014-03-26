@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <style type="text/css">
+        body{
+            font-size:12px; 
+        }
+        .logger {        
+            width:100px;
+            background: #ccc;
+            margin: 20px;
+            padding:5px;
+            float: left;
+            height: 200;
+        }
+        .timer{
+            padding: 20px;
+            width: 200px;
+            height: 50px;
+            background: #ccc;
+            color: #fff;
+        }
+    </style>
+
+    <script src="jquery.js"></script>
+
+
+</head>
+
+<body>
+    
+    <div class="timer"></div>
+    
+    
+    <script type="text/javascript">
+   
+         function onlyUnique(value, index, self) { 
+             return self.indexOf(value) === index;
+         }
+        function fib(n) {
+            return n < 2 ? 1 : fib(n - 1) + fib(n - 2);
+        }
+
+        var Work = function () {
+            var perfomance = 0;
+            var start = Date.now();
+
+            function populate() {
+                perfomance++;
+                var square = fib(20);
+                if (perfomance < 1000) {
+                    populate();
+                }
+            }
+
+            populate();
+
+            var end = Date.now();
+
+            return (end - start);
+
+        };
+
+
+        
+        $(function(){
+            
+            function createDom () {            
+                for (var x= 0; x< 16; x++) {
+                    $('body').append('<div class="logger" />');
+                    
+                }            
+            }
+            
+            
+            var start = Date.now();            
+            function doWork (x, log) { 
+                 for (var i = 0; i < x; i++) {
+                    var workOne = Work();            
+                    log.append(workOne + "----" + (Date.now() - start));
+                    log.append('<br />');
+                 }
+            }
+            
+            function runWork(x, log) {
+                var worker = new Worker('worker.js');                
+                worker.addEventListener('message', function(e) {
+                    var workOne =  e.data.work;
+                    log.append(workOne + "----" + (Date.now() - start));
+                    log.append('<br />');
+                }, false);
+                for (var i = 0; i < x; i++) {
+                    worker.postMessage({ method :'GET' });
+                }
+            }
+            
+            createDom();
+            
+            var oneWorker = new Worker('worker.js');            
+            oneWorker.addEventListener('message', function(e) {
+                    var workOne =  e.data.work;
+                    $('.logger').eq(e.data.index).append(workOne + "----" + (Date.now() - start));
+                    $('.logger').eq(e.data.index).append('<br />');
+                }, false);
+            
+            $('.logger').each(function (index) {            
+                if (index < ($('.logger').length/2)) { 
+                    runWork(10,$(this));
+                    $(this).css('background','#F2F8F2');
+                } else {
+                    //doWork(10, $(this));
+                    for (var i = 0; i < 10; i++) {
+                        oneWorker.postMessage({ method : 'GET', index : index });
+                    }
+                }
+            });
+                        
+            
+            var time = 0;
+            setInterval(function(){
+                time++;
+                $('.timer').text(time);            
+            }, 1000)
+            
+        });
+    </script>
+</body>
+
+</html>
