@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <style type="text/css">
+        body{
+            font-size:12px;
+            font-family: sans-serif;
+        }
+        h2{
+            margin: 10px;
+            padding: 5px;
+            font-size: 16px;
+
+        }
+        .logger {
+            width:100px;
+            background: #ccc;
+            margin: 20px;
+            padding:5px;
+            float: left;
+            height: 200;
+        }
+        .timer{
+            padding: 20px;
+            width: 200px;
+            height: 50px;
+            background: #ccc;
+            color: #fff;
+        }
+        .wrapper {
+            background: #F7F7F9;
+            height: 400px;
+            width: 400px;
+            clear: both;
+            border: 1px solid #91919d;
+            margin: 10px;
+        }
+        .fibval {
+            background: #ccccde;
+            height: 45px;
+            width: 190px;
+            float:left;
+            margin: 2px;
+            border: 1px solid #69698b;
+        }
+        .start {
+            border-radius: 5px;
+            padding: 10px;
+            margin: 5px;
+            text-align: center;
+            font-size: 14px;
+            background: #8ede85;
+        }
+    </style>
+
+    <script src="js/jquery.js"></script>
+    <script src="js/parallel.js"></script>
+
+
+</head>
+
+<body>
+
+    <div class="timer"></div>
+
+    <div class="wrapper">
+        <h2>With 1 worker</h2>
+        <div class="start" id="oneWorker">Start</div>
+        <div class="febwrap">
+            <div class="fibval"></div>
+            <div class="fibval"></div>
+            <div class="fibval"></div>
+            <div class="fibval"></div>
+            <div class="fibval"></div>
+            <div class="fibval"></div>
+            <div class="fibval"></div>
+            <div class="fibval"></div>
+            <div class="fibval"></div>
+            <div class="fibval"></div>
+        </div>
+
+    </div>
+    <div class="wrapper">
+        <h2>With 4 worker</h2>
+        <div class="start" id="oneWorker">Start</div>
+        <div class="febwrap">
+            <div class="fibval"></div>
+            <div class="fibval"></div>
+            <div class="fibval"></div>
+            <div class="fibval"></div>
+            <div class="fibval"></div>
+            <div class="fibval"></div>
+            <div class="fibval"></div>
+            <div class="fibval"></div>
+            <div class="fibval"></div>
+            <div class="fibval"></div>
+        </div>
+    </div>
+
+
+    <script src="js/setup.js"></script>
+</body>
+
+</html>
