@@ -5,29 +5,30 @@ Observable Worker API
 Initialize an observable worker
 -------------------------------
 An observable worker can be initialized as follows
-> var obWorker = new ObservableWorker(workerjs, options);
+
+    var obWorker = new ObservableWorker(workerjs, options);
 
 **workerjs** can be worker file or a js function reference. But with following conditions
 
-1. the workerjs should be a webworker compatible file 
+1. the workerjs should be a webworker compatible file
 
-  > var worker = new Webworker(workerjsfile);
-  > worker.postMessage(data);
-  > worker.onmessage(function(processedData) {
-       });
-    
+        var worker = new Webworker(workerjsfile);
+        worker.postMessage(data);
+        worker.onmessage(function(processedData) { });
+
 2. or it can be a normal function reference which doesn't have any external dependency like global varaiable, external modules, plugins, dom access etc. The function shoud return the expected result.
->var processedData = workerjs(data);
+
+        var processedData = workerjs(data);
 
 
-**Options** 
+**Options**
 
     {
         server : {
             url:'http://localhost:8888/workers',
             auth : 'session'| 'none' | 'token',
             silentfail : true // on server connection lost be silent or throw error and restart with out server
-        
+
         },
         maxWorkers: // the number of maximun worker in client and server
     }
@@ -43,7 +44,7 @@ Assigning data
 1.  **data**  - data to processing which can pass to workerfile to get processed and return the result on on-message.
 data can be an array or string compatible with worker function.
 
-2. **options** 
+2. **options**
 
         {
          id: 1 ,
@@ -61,16 +62,16 @@ Subscribe to  processed data
 ------------------------
 
 After the function call is completed  *subscribe* function will be called with  callback
-   
+
 
      obWorker.subscribe(function(result, details, err){
-        
+
      });
 
 **Eg: **
 
     var obWorker = new ObservableWorker(getSquare).data([10,20,30,40]);
-    
+
     obWorker.subscribe(function(result, resultdetails, err){
         console.log(result,resultdetails);
         //[100,400,900,1600]
@@ -80,9 +81,9 @@ After the function call is completed  *subscribe* function will be called with  
     function getSquare(x){
      return x*x;
     }
-    
+
     var obWorker = new ObservarWorker(getSquare).data([10,20,30,40],{ async: true });
-    
+
     obWorker.subscribe(function(result, resultdetails, err){
         console.log(result,resultdetails);
     });
@@ -112,19 +113,19 @@ If you want to change the data at particular index use *'setIndexData'* , this w
 
 To check whether all data in array is processed or not
 
-    obWorker.inProcess(); 
-    
+    obWorker.inProcess();
+
  To check whether worker is connected to server
- 
-    obWorker.isConnected(); 
-    
+
+    obWorker.isConnected();
+
 On server error/connection lost etc
 
-    obWorker.onServerError(function(err){ }); 
-    
+    obWorker.onServerError(function(err){ });
+
 Return an object with worker id list
 
-    obWorker.getWorkerDetails(); 
+    obWorker.getWorkerDetails();
        // {
             client : [1234,1235,1236],
             server : []
