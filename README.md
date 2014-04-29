@@ -1,4 +1,7 @@
 
+***In development - library not avaliable***
+
+
 Observable Worker API
 =====================
 
