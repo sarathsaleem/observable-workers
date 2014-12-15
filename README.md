@@ -30,12 +30,13 @@ An observable worker can be initialized as follows
         server : {
             url:'http://localhost:8888/workers',
             auth : 'session'| 'none' | 'token',
-            silentfail : true // on server connection lost be silent or throw error and restart with out server
+            silentfail : true
 
         },
         maxWorkers: // the number of maximun worker in client and server
     }
 
+silentfail will determine , on server connection lost be silent or throw error and restart with out server
 
 
 Assigning data

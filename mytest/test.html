@@ -5,9 +5,9 @@
 
     <style type="text/css">
         body{
-            font-size:12px; 
+            font-size:12px;
         }
-        .logger {        
+        .logger {
             width:100px;
             background: #ccc;
             margin: 20px;
@@ -30,13 +30,13 @@
 </head>
 
 <body>
-    
+
     <div class="timer"></div>
-    
-    
+
+
     <script type="text/javascript">
-   
-         function onlyUnique(value, index, self) { 
+
+         function onlyUnique(value, index, self) {
              return self.indexOf(value) === index;
          }
         function fib(n) {
@@ -64,28 +64,28 @@
         };
 
 
-        
+
         $(function(){
-            
-            function createDom () {            
+
+            function createDom () {
                 for (var x= 0; x< 16; x++) {
                     $('body').append('<div class="logger" />');
-                    
-                }            
+
+                }
             }
-            
-            
-            var start = Date.now();            
-            function doWork (x, log) { 
+
+
+            var start = Date.now();
+            function doWork (x, log) {
                  for (var i = 0; i < x; i++) {
-                    var workOne = Work();            
+                    var workOne = Work();
                     log.append(workOne + "----" + (Date.now() - start));
                     log.append('<br />');
                  }
             }
-            
+
             function runWork(x, log) {
-                var worker = new Worker('worker.js');                
+                var worker = new Worker('worker.js');
                 worker.addEventListener('message', function(e) {
                     var workOne =  e.data.work;
                     log.append(workOne + "----" + (Date.now() - start));
@@ -95,18 +95,18 @@
                     worker.postMessage({ method :'GET' });
                 }
             }
-            
+
             createDom();
-            
-            var oneWorker = new Worker('worker.js');            
+
+            var oneWorker = new Worker('worker.js');
             oneWorker.addEventListener('message', function(e) {
                     var workOne =  e.data.work;
                     $('.logger').eq(e.data.index).append(workOne + "----" + (Date.now() - start));
                     $('.logger').eq(e.data.index).append('<br />');
                 }, false);
-            
-            $('.logger').each(function (index) {            
-                if (index < ($('.logger').length/2)) { 
+
+            $('.logger').each(function (index) {
+                if (index < ($('.logger').length/2)) {
                     runWork(10,$(this));
                     $(this).css('background','#F2F8F2');
                 } else {
@@ -116,14 +116,14 @@
                     }
                 }
             });
-                        
-            
+
+
             var time = 0;
             setInterval(function(){
                 time++;
-                $('.timer').text(time);            
-            }, 1000)
-            
+                $('.timer').text(time);
+            }, 1000);
+
         });
     </script>
 </body>
