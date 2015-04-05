@@ -42,7 +42,7 @@ function displayResponse(data) {
     }
 
     taskEle.addClass('done');
-    taskEle.text(data.work.time + 'sec');
+    taskEle.text(data.work.time + 'm-sec');
 
 
     //if all tasks is completed

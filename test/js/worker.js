@@ -13,7 +13,7 @@ var Work = function (hardness) {
 
         var square = fib(25);
 
-        if (loop < hardness) { // find 25 fibonacci number for 'hardness' numerof times
+        if (loop < hardness) { // find 25 fibonacci number for 'hardness' number of times
             populate();
         }
     }
