@@ -40,11 +40,15 @@
         }
         .fibval {
           background: #CCCCDE;
-          height: 45px;
+          text-align: center;
+          padding: 15px 0;
           width: 48%;
           float: left;
           margin: 2px;
           box-shadow: 1px 1px 1px #9696BE;
+        }
+        .fibval.done{
+            background: #18b460;
         }
         .start {
             border-radius: 5px;
@@ -97,6 +101,15 @@
             top:1px;
         }
 
+        .info {
+            clear: both;
+            padding: 30px;
+            opacity: .2;
+        }
+        .info.done {
+            opacity: 1;
+        }
+
     </style>
 
     <script src="js/jquery.js"></script>
@@ -111,34 +124,35 @@
     <div class="wrapper oneWorker">
         <div class="start myButton">Start</div>
         <div class="febwrap">
-            <div class="fibval"></div>
-            <div class="fibval"></div>
-            <div class="fibval"></div>
-            <div class="fibval"></div>
-            <div class="fibval"></div>
-            <div class="fibval"></div>
-            <div class="fibval"></div>
-            <div class="fibval"></div>
-            <div class="fibval"></div>
-            <div class="fibval"></div>
+            <div class="fibval">0</div>
+            <div class="fibval">0</div>
+            <div class="fibval">0</div>
+            <div class="fibval">0</div>
+            <div class="fibval">0</div>
+            <div class="fibval">0</div>
+            <div class="fibval">0</div>
+            <div class="fibval">0</div>
+            <div class="fibval">0</div>
+            <div class="fibval">0</div>
         </div>
-
+        <div class="info"> Completed in <span >0</span> millisecond</div>
     </div>
     <h2>With 4 worker</h2>
     <div class="wrapper fourWorker">
         <div class="start myButton">Start</div>
         <div class="febwrap">
-            <div class="fibval"></div>
-            <div class="fibval"></div>
-            <div class="fibval"></div>
-            <div class="fibval"></div>
-            <div class="fibval"></div>
-            <div class="fibval"></div>
-            <div class="fibval"></div>
-            <div class="fibval"></div>
-            <div class="fibval"></div>
-            <div class="fibval"></div>
+            <div class="fibval">0</div>
+            <div class="fibval">0</div>
+            <div class="fibval">0</div>
+            <div class="fibval">0</div>
+            <div class="fibval">0</div>
+            <div class="fibval">0</div>
+            <div class="fibval">0</div>
+            <div class="fibval">0</div>
+            <div class="fibval">0</div>
+            <div class="fibval">0</div>
         </div>
+        <div class="info"> Completed in <span >0</span> millisecond</div>
     </div>
 
 
