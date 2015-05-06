@@ -14,21 +14,46 @@ var startOne = 0,
 $(function () {
 
     var numberOfTasks = 10;
-
-    $('.oneWorker .start').on('click', function () {
-        var workers = createWorker(1);
+    
+    
+    var oneWorker = function () {
+        
+        // create a worker pool with 1 worker
+        var workerPool = createWorkerPool(1);
         startOne = Date.now();
-        mapAndStartWorking(numberOfTasks, workers, 'oneWorker');
-    });
+        
+        /* Assign works to workerPool
+         * @param : numner of takas to do
+         * @param : worker pool to run
+         * @param : identifier name
+         */
+        mapAndStartWorking(numberOfTasks, workerPool, 'oneWorker');
+    };
 
-
-    $('.fourWorker .start').on('click', function () {
-        var workers = createWorker(4);
+   $('.oneWorker .start').on('click', oneWorker);
+    
+   var nWorkerPool = function () {
+        // create a worker pool with 4 worker
+        var workerPool = createWorkerPool(4);
         startFour = Date.now();
-        mapAndStartWorking(numberOfTasks, workers, 'fourWorker');
-    });
+       
+        /* Assign works to workerPool
+         * @param : numner of takas to do
+         * @param : worker pool to run
+         * @param : identifier name
+         */
+        mapAndStartWorking(numberOfTasks, workerPool, 'fourWorker');
+    };
+
+    $('.fourWorker .start').on('click', nWorkerPool);
 
 });
+
+
+
+
+
+
 
 function displayResponse(data) {
     var taskEle;
@@ -67,7 +92,7 @@ function runWork() {
 }
 
 
-function createWorker(workerNumber) {
+function createWorkerPool(workerNumber) {
     var workers = [];
     for (var i = 0; i < workerNumber; i++) {
         var worker = runWork();

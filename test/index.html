@@ -8,11 +8,17 @@
             font-size:12px;
             font-family: 'verdana';
         }
+        .wrapperMain {
+            width: 900px;
+            margin: 0 auto;
+        }
         h2 {
-            margin: 10px;
-            padding: 5px;
+            margin: 10px 0;
+            padding: 12px;
             font-size: 16px;
-
+            background-color: rgb(21, 136, 126);
+            color: #FFF;
+            clear: both;
         }
         .logger {
             width:100px;
@@ -37,6 +43,8 @@
             border: 1px solid #E2E2E2;
             margin: 10px;
             box-shadow: 1px 1px 1px #E6E6F5;
+            width: 45%;
+            float: left;
         }
         .fibval {
           background: #CCCCDE;
@@ -109,7 +117,14 @@
         .info.done {
             opacity: 1;
         }
-
+        .imgWrapper {
+          width: 52%;
+          float: left;
+          padding: 10px 0;
+        }
+        .imgWrapper img {
+            width: 100%;
+        }
     </style>
 
     <script src="js/jquery.js"></script>
@@ -118,9 +133,27 @@
 </head>
 
 <body>
+    <div class="wrapperMain">
 
 
-    <h2>With 1 worker</h2>
+    <h2>Worker pool with 1 worker</h2>
+    
+    <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"> <span style="color: #008800; font-weight: bold">var</span> oneWorker <span style="color: #333333">=</span> <span style="color: #008800; font-weight: bold">function</span> () {
+        
+        <span style="color: #888888">// create a worker pool with 1 worker</span>
+        <span style="color: #008800; font-weight: bold">var</span> workerPool <span style="color: #333333">=</span> createWorkerPool(<span style="color: #0000DD; font-weight: bold">1</span>);
+        startOne <span style="color: #333333">=</span> <span style="color: #007020">Date</span>.now();
+        
+        <span style="color: #888888">/* Assign works to workerPool</span>
+<span style="color: #888888">         * @param : numnber of tasks to do</span>
+<span style="color: #888888">         * @param : worker pool to run</span>
+<span style="color: #888888">         * @param : identifier name</span>
+<span style="color: #888888">         */</span>
+        mapAndStartWorking(numberOfTasks, workerPool, <span style="background-color: #fff0f0">&#39;oneWorker&#39;</span>);
+    };
+</pre></div>
+
+
     <div class="wrapper oneWorker">
         <div class="start myButton">Start</div>
         <div class="febwrap">
@@ -137,7 +170,22 @@
         </div>
         <div class="info"> Completed in <span >0</span> millisecond</div>
     </div>
-    <h2>With 4 worker</h2>
+    <div class="imgWrapper"><img src="1.png" /> </div>
+    <h2>Worker pool with 4 worker</h2>
+   <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #008800; font-weight: bold">var</span> nWorkerPool <span style="color: #333333">=</span> <span style="color: #008800; font-weight: bold">function</span> () {
+        <span style="color: #888888">// create a worker pool with 4 worker</span>
+        <span style="color: #008800; font-weight: bold">var</span> workerPool <span style="color: #333333">=</span> createWorkerPool(<span style="color: #0000DD; font-weight: bold">4</span>);
+       
+        <span style="color: #888888">/* Assign works to workerPool</span>
+<span style="color: #888888">         * @param : number of tasks to do</span>
+<span style="color: #888888">         * @param : worker pool to run</span>
+<span style="color: #888888">         * @param : identifier name</span>
+<span style="color: #888888">         */</span>
+        mapAndStartWorking(numberOfTasks, workerPool, <span style="background-color: #fff0f0">&#39;fourWorker&#39;</span>);
+    };
+</pre></div>
+
+
     <div class="wrapper fourWorker">
         <div class="start myButton">Start</div>
         <div class="febwrap">
@@ -154,8 +202,9 @@
         </div>
         <div class="info"> Completed in <span >0</span> millisecond</div>
     </div>
+        <div class="imgWrapper"><img src="4.png" /> </div>
 
-
+</div>
     <script src="js/setup.js"></script>
 </body>
 
