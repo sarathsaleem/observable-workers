@@ -1,0 +1,11 @@
+{
+    "name": "Worker Pool",
+    "author": {
+        "name": ""
+    },
+    "version": "0.0.1",
+    "dependencies" : {
+        "express": "~4.9.7",
+        "socket.io": "1.1.0"
+    }
+}
