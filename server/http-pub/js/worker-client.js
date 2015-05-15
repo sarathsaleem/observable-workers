@@ -5,15 +5,15 @@ var socket = io.connect('');
 socket.on("connect", function () {});
 
 
-function init(data) {
-
-    data.data.forEach(function(d){
-        $("#main").append(d +"</br>");
+function init(connections) {
+    var li = '';
+    connections.data.forEach(function (data) {
+        li += '<li>' + data + '</li>';
     });
+    $("#main ul").html(li);
 }
 
 $(function () {
-
-    socket.on("event-grid", init);
+    socket.on("connection-info", init);
 
 });

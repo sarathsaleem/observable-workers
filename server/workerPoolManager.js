@@ -24,9 +24,15 @@ function workerPoolManager(sockets) {
                 socket: socket
             });
 
-        devices.push(socket.handshake.headers['user-agent']);
+        devices.push(socket.id);
 
-        emit("event-grid", {data: devices });
+        emit("connection-info", {data: devices });
+    };
+    
+    this.remove = function (socket) {
+        var index = devices.indexOf(socket.id);
+        devices.splice(index, 1);
+        emit("connection-info", {data: devices });
     };
 
     init(sockets);

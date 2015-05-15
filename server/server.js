@@ -25,7 +25,8 @@ io.sockets.on('connection', function (socket) {
     workerPool.add(socket);
 
      socket.on('disconnect', function (ss) {
-          console.log('disconnected', ss);
+         console.log('disconnected',  socket.id);
+         workerPool.remove(socket);
      });
 
 
