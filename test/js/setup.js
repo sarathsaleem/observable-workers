@@ -32,7 +32,7 @@ var nWorkerPool = function () {
 /* Create and return array of workers
  *
  * @param : number of workers to create
- * @retun : array of worker
+ * @return : array of worker
  *
  */
 function createWorkerPool(workerNumber) {
