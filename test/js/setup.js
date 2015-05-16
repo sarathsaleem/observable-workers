@@ -96,7 +96,7 @@ function displayResponse(data) {
     taskEle.text(data.work.time + 'm-sec');
 
 
-    //if all tasks is completed
+    //if all tasks are completed
     if ($('.oneWorker .fibval.done').length === 10 && !$('.oneWorker .info').hasClass('done')) {
         $('.oneWorker .info').addClass('done').find('span').text(Date.now() - startOne);
     }
