@@ -1,6 +1,29 @@
 
-***In development - library not avaliable***
+**Paper***
 
+Multi-cored hard-wired devices are ruling the current computational devices, and
+all main stream languages and technology utilizes this feature to produce more advanced
+featured applications and practical implementations. These approaches thereby bringing
+potential benefit of parallelism. But only in the web where JavaScript has been heavily
+used for handling UI events and data, this feature was untapped till recent days, because
+of the single threaded nature of Javascript. But as part of the HTML5 specification W3C
+introduced an API for running scripts in the background independently of any user
+interface scripts called web workers which offer a way to exploit parallelism in
+JavaScript.
+
+This paper explores the implementation of web workers to solve parallel execution issue
+in an observable pattern for better utilization of resources by converging benefits of both
+the parallel and distributed computing paradigms. Here, we are proposing an architectural
+approach where web-workers are implemented as independent observables for cloud
+based application. This includes the components and paradigm for achieving parallel
+execution of tasks by utilizing observable patterns for distributed execution in cloud
+resource as well as offline on the client side.
+
+Keywords — Web-workers, Cloud application, JavaScript, threading, Observable
+pattern, Connection pool
+
+
+***In development - library not avaliable***
 
 Observable Worker API
 =====================
