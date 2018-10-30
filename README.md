@@ -1,5 +1,5 @@
 
-**Paper***
+**Paper**
 
 Multi-cored hard-wired devices are ruling the current computational devices, and
 all main stream languages and technology utilizes this feature to produce more advanced
